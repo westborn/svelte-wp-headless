@@ -21,7 +21,9 @@
 
 	{#each posts as post}
 		<h2 class="text-3xl mt-4">{@html post.title.rendered}</h2>
-		<GetImage size="thumbnail" imageId={post.imageId} alt={post.title.rendered} />
+		{#if post.featured_media}
+			<GetImage size="thumbnail" imageId={post.featured_media} alt={post.title.rendered} />
+		{/if}
 		<p>{@html post.excerpt.rendered}</p>
 		<a
 			class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"

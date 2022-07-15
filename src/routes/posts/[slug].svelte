@@ -4,9 +4,6 @@
 		const slug = params.slug;
 		const res = await fetch(`/api/posts/${slug}.json`);
 		const post = await res.json();
-		post.image = post._embedded['wp:featuredmedia'][0].media_details.file;
-		post.imageId = post._embedded['wp:featuredmedia'][0].id;
-
 		return {
 			props: {
 				post
@@ -31,10 +28,8 @@
 <h1 class="text-2xl">{@html post.title.rendered}</h1>
 <p class="text-xs">{new Date(post.date)}</p>
 <p class="font-semibold">by {post.author}</p>
-{#if post.imageId}
-	<GetImage size="thumbnail" imageId={post.imageId} alt={post.title.rendered} />
-
-	<!-- <img class="w-40" src={post.image} alt={post.title.rendered} /> -->
+{#if post.featured_media}
+	<GetImage size="thumbnail" imageId={post.featured_media} alt={post.title.rendered} />
 {/if}
 <p>{@html post.content.rendered}</p>
 

@@ -31,9 +31,22 @@
 {#if src}
 	<img {src} {alt} class="img-fluid" />
 {:else}
-	<img
-		src={`https://placehold.jp/30/dd6699/ffffff/300x150.png?text=placeholder_${alt}`}
-		{alt}
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 150 150"
 		class="img-fluid"
-	/>
+		width="150"
+		height="150"
+	>
+		<rect width="150" height="150" fill="#cccccc" />
+		<text
+			x="50%"
+			y="50%"
+			dominant-baseline="middle"
+			text-anchor="middle"
+			font-family="monospace"
+			font-size="26px"
+			fill="#333333">Loading</text
+		>
+	</svg>
 {/if}
