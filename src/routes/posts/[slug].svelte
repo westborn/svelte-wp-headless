@@ -1,6 +1,5 @@
 <script context="module">
 	export const load = async ({ params, fetch }) => {
-		console.log('[slug].svelte', params.slug);
 		const slug = params.slug;
 		const res = await fetch(`/api/posts/${slug}.json`);
 		const post = await res.json();

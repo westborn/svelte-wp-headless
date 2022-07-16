@@ -9,22 +9,13 @@
 	const apiUrl = `${BASE_URL}/wp-json/wp/v2/media/${imageId}`;
 
 	let images = [];
-	let src = '';
+	let src;
 
-	onMount(async function () {
-		if (imageId) {
-			const response = await fetch(apiUrl);
-			images = await response.json();
-			// console.log(images);
-			if (
-				images &&
-				images.media_details &&
-				images.media_details.sizes &&
-				images.media_details.sizes[size]
-			) {
-				src = images.media_details.sizes[size].source_url || '';
-			}
-		}
+	$: onMount(async () => {
+		const res = await fetch(apiUrl);
+		const data = await res.json();
+		images = data.media_details.sizes;
+		src = images[size].source_url;
 	});
 </script>
 
