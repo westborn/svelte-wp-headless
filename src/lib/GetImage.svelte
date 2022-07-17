@@ -1,12 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import { BASE_URL } from '$lib/variables';
+	import { BASE_URL, MEDIA_API_URL } from '$lib/variables';
 
 	export let imageId;
 	export let size;
 	export let alt;
 
-	const apiUrl = `${BASE_URL}/wp-json/wp/v2/media/${imageId}`;
+	const apiUrl = `${BASE_URL}${MEDIA_API_URL}${imageId}`;
 
 	let images = [];
 	let src;
