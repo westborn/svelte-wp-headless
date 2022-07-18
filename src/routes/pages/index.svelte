@@ -1,7 +1,6 @@
 <script context="module">
 	export const load = async ({ fetch }) => {
-		console.log('load');
-		const res = await fetch('/api/pages/1.json');
+		const res = await fetch('/api/pages.json');
 		const body = await res.json();
 		const pages = body.pages;
 		const totalPages = body.totalPages;
